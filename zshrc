@@ -92,9 +92,9 @@ plugins=(
     npm
     safe-paste
     vi-mode
-    zsh-autosuggestions
-    you-should-use
-    zsh-syntax-highlighting
+    # zsh-autosuggestions
+    # you-should-use
+    # zsh-syntax-highlighting
 )
 
 # Auto Notify settings
@@ -106,7 +106,7 @@ AUTO_NOTIFY_IGNORE+=("docker" "git" "python" "docker-compose" "man" "sleep" "hto
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -131,12 +131,14 @@ alias la="ls -A"
 alias l="ls -CFA"
 alias c="clear"
 alias tmux="tmux -2"
+alias temasek="cd $HOME/Code/temasek"
 alias setclip="clip.exe"
 alias getclip="powershell.exe Get-Clipboard"
 alias getpwd="pwd | setclip"
 alias v="vim"
 alias sa="source activate"
 alias sd="conda deactivate"
+alias sv="source venv/bin/activate"
 alias conda-ls="conda info --envs"
 alias nopasswd="eval $(ssh-agent)"
 alias dup="docker-compose up -d"
@@ -148,6 +150,8 @@ alias savessh="ssh-add $HOME/.ssh/id_rsa"
 alias ytdp="youtube-dl -o \"%(playlist_index)s-%(title)s.%(ext)s\""
 alias sshconfig="vim $HOME/.ssh/config"
 alias getrsa="cat $HOME/.ssh/id_rsa.pub | setclip"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=human"
+alias glfp="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=human --first-parent"
 
 function mcd() {
     mkdir $1 && cd $1
@@ -185,7 +189,7 @@ export LC_ALL=en_US.UTF-8
 HISTSIZE=5000               #How many lines of history to keep in memory
 HISTFILE=~/.zsh_history     #Where to save history to disk
 SAVEHIST=5000               #Number of history entries to save to disk
-#HISTDUP=erase               #Erase duplicates in the history file
+HISTDUP=erase               #Erase duplicates in the history file
 setopt    appendhistory     #Append history to the history file (no overwriting)
 setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killedpath=(~/.zsh/completion $fpath)
@@ -202,3 +206,6 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# added by Snowflake SnowSQL installer
+export PATH=/home/matthew/bin:$PATH
