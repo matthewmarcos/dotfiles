@@ -102,7 +102,7 @@ set swapfile                      " do I even need those?
 set directory=$HOME/.vim/tmp/swap/
 set undodir=$HOME/.vim/tmp/undo/     " undo   files directory
 set backupdir=$HOME/.vim/tmp/backup/ " backup files directory
-set viewdir=$HOME/.tmp/vim/view/     " view   files directory
+set viewdir=$HOME/.vim/tmp/view/     " view   files directory
 
 " Splits ----------------------------------------------------------------------
 set splitbelow
