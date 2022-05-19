@@ -26,8 +26,10 @@ vnoremap H ^
 
 " Quick-escape to normal mode
 " inoremap jj <esc> -> start forgetting this
-inoremap jk <esc>
-inoremap <esc> <nop>
+inoremap jk <ESC>
+inoremap kj <esc>
+vnoremap kj <esc>
+" inoremap <esc> <nop>
 
 " Better indention
 vnoremap < <gv
