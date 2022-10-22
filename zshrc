@@ -80,7 +80,7 @@ plugins=(
     history
     history-substring-search
     npm
-    osx
+    macos
     rsync
     safe-paste
     vi-mode
@@ -124,6 +124,7 @@ alias zshsrc="source $HOME/.zshrc"
 alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CFA'
+alias ls='ls -lah'
 alias c='clear'
 alias tmux="tmux -2"
 alias setclip='pbcopy'
@@ -140,7 +141,7 @@ alias drs="docker-compose restart"
 alias gbrd="git branch | grep -v "master" | xargs git branch -D"
 alias docker-rb='docker-compose -f docker-compose.yml build --force-rm'
 alias savessh='ssh-add ~/.ssh/id_rsa'
-alias ytd="youtube-dl"
+alias ytd="yt-dlp"
 alias ytdp="youtube-dl -o \"%(playlist_index)s-%(title)s.%(ext)s\""
 alias portblocker="lsof -i"  # portblocker <portNumber>
 alias helpers="cd ~/helpers"
@@ -174,6 +175,14 @@ setopt    completealiases
 
 source $ZSH/oh-my-zsh.sh
 
+eval "$(direnv hook zsh)"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/matthew/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -189,20 +198,3 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export PATH="/Users/matthew/opt/miniconda3/bin:$PATH"
-
-eval "$(direnv hook zsh)"
-eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
-
-# bindkey -v
-# bindkey '^R' history-incremental-search-backward
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/matthew/helpers/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/matthew/helpers/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/matthew/helpers/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/matthew/helpers/google-cloud-sdk/completion.zsh.inc'; fi
