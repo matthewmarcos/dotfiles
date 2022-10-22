@@ -67,7 +67,6 @@ ZSH_TMUX_AUTOSTART="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     auto-notify
-    battery
     brew
     colorize
     command-not-found
@@ -84,10 +83,6 @@ plugins=(
     rsync
     safe-paste
     vi-mode
-    zsh-256color
-    zsh-autosuggestions
-    you-should-use
-    zsh-syntax-highlighting
     zsh-nvm
 )
 
@@ -176,7 +171,7 @@ setopt    completealiases
 source $ZSH/oh-my-zsh.sh
 
 eval "$(direnv hook zsh)"
-eval "$(goenv init -)"
+# eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
