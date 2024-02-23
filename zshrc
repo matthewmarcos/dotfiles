@@ -5,27 +5,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-export TERM=xterm-256color
-[ -n "$TMUX"  ] && export TERM=screen-256color
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export SERVICE_ACCOUNTS_FOLDER="/Users/matthew/helpers/service_account_keys"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-export PATH="$HOME/.tmux:$PATH"
-export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/helpers/bin"
-# export PATH="$PATH:$HOME/helpers/google-cloud-sdk/bin"
-
-# GOENV
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -94,19 +78,15 @@ export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_c
 export ZSH_COLORIZE_TOOL=chroma
 AUTO_NOTIFY_IGNORE+=("docker" "git" "python" "docker-compose" "man" "sleep" "htop" "yarn" "node" "npm" "yarn" "tmux" "vim")
 
-# User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.tmux:$PATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export TERM=xterm-256color
+[ -n "$TMUX"  ] && export TERM=screen-256color
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-else
-    export EDITOR='vim'
-fi
+export EDITOR='vim'
 
 alias work="cd $HOME/Code"
 alias remote="cd $HOME/remote"
@@ -137,7 +117,8 @@ alias gbrd="git branch | grep -v "master" | xargs git branch -D"
 alias docker-rb='docker-compose -f docker-compose.yml build --force-rm'
 alias savessh='ssh-add ~/.ssh/id_rsa'
 alias ytd="yt-dlp"
-alias ytdp="youtube-dl -o \"%(playlist_index)s-%(title)s.%(ext)s\""
+alias ytdp="yt-dlp -o \"%(playlist_index)s-%(title)s.%(ext)s\""
+alias ytdm='yt-dlp -ci -f "bestaudio[ext=m4a]"'
 alias portblocker="lsof -i"  # portblocker <portNumber>
 alias helpers="cd ~/helpers"
 alias db="pushd ~/helpers/database-containers && dup || popd"
@@ -162,32 +143,29 @@ export LC_ALL=en_US.UTF-8
 export HISTTIMEFORMAT="%d/%m/%y %T"
 export HISTSIZE=5000               #How many lines of history to keep in memory
 export HISTFILE=~/.zsh_history     #Where to save history to disk
-SAVEHIST=50000               #Number of history entries to save to disk
-setopt    appendhistory     #Append history to the history file (no overwriting)
-setopt    sharehistory      #Share history across terminals
-setopt    incappendhistory  #Immediately append to the history file, not just when a term is killedpath=(~/.zsh/completion $fpath)
-setopt    completealiases
+export SAVEHIST=50000               #Number of history entries to save to disk
+setopt appendhistory     #Append history to the history file (no overwriting)
+setopt sharehistory      #Share history across terminals
+setopt incappendhistory  #Immediately append to the history file, not just when a term is killedpath=(~/.zsh/completion $fpath)
+setopt completealiases
 
 source $ZSH/oh-my-zsh.sh
 
 eval "$(direnv hook zsh)"
-# eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/matthew/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/matthew/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/matthew/opt/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/matthew/opt/miniconda3/bin:$PATH"
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
     fi
 fi
 unset __conda_setup
